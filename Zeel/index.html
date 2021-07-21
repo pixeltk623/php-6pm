@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table</title>
+	<style type="text/css">
+		table tr th,td {
+			padding: 10px;
+		}
+
+		table {
+			margin: auto;:;
+			border: 1px solid red
+		}
+
+		table tr td {
+			text-align: center; background-color: blue ;
+		}
+		/*h1 {
+			text-align: center;
+		}*/
+	</style>
+</head>
+<body>
+
+	<div style="background-color: grey; width: 80%; height: 50px; padding: 10px; margin: 50px;">Test</div>
+	<br>
+	<table border="1" width="100%" style="border-collapse: collapse;"> 
+
+		<tr>
+			
+		<th>L1</th>
+		<th>l2</th>
+		<th>l3</th>
+		<th>info</th>
+		<th>Name</th>
+		</tr>
+		<tr>
+			<th rowspan="6"> system</th>
+			<th rowspan="4">system apps</th>
+			<th rowspan="3">systemenv</th>
+			<th> aap test</th>
+			<th>foo</th>
+
+		</tr>
+		<tr>
+			<th>app memory</th> 
+			<th>foo</th> 
+
+		</tr>
+		<tr>
+			<th>app test</th> 
+			<th>bar</th> 
+		</tr>
+		<tr>
+			<th>systemenv2</th> 
+			<th>app test</th> 
+			<th>bar</th> 
+		</tr>
+		<tr>
+			<th rowspan="2">system memory</th> 
+			<th rowspan="2">memory test</th> 
+			<th>memoryfunc</th> 
+			<th>foo</th> 
+		</tr>
+		<tr>
+			<th>app test</th> 
+			<th>foo</th> 
+		</tr>
+</br>
+</table>
+</body>
+</html>
+	
