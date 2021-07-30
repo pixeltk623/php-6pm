@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		table tr th,td {
+			padding: 10px;
+		}
+		table {
+			margin: auto;
+			text-align : right;
+		}
+
+		input[type=text],input[type=email], textarea, select, input[type=date] {
+			width: 100%;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<form>
+	<table border="0" style="border-collapse: collapse; width: 50%">
+		<tr>
+			<th>Job Title:</th>
+			<td><input type="text" name="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<td rowspan="2"><label>Description:</label></td>
+		    <td><textarea></textarea></td>
+		</tr>
+		<tr>
+			<td>Brief Description should have 500 characters</td>
+		</tr>
+		<tr>
+			<th>Company Name:</th>
+			<td><input type="text" name="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<th>Contact Number:</th>
+			<td><input type="text" name=""  ></td>
+		</tr>
+		<tr>
+			<th>Contact person:</th>
+			<td><input type="text" name="" required></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" name="" placeholder=""></td>
+		</tr>
+		<tr>
+			<th>Website:</th>
+			<td><input type="text" name="" placeholder=""></td>
+		</tr>
+		<tr>
+			<th>Password:</th>
+			<td><input type="text" name="" placeholder="" required></td>
+		</tr>
+		<tr>
+		    <th><label>Work Status</label> 
+	        <td><input type="checkbox" name="Work Status">Full Time
+	        <input type="checkbox" name="Work Status">Part Time
+	        <input type="checkbox" name="Work Status">Per Dim
+	        <input type="checkbox" name="Work Status">Others</td>
+		</tr>
+		<tr>
+			<th>Salary</th>
+			<td><input type="text" name="" placeholder="">
+				<select><option value="">Select</option>
+					<option value="US dollar">Us dollar</option>
+					<option value="INR">INR</option></select>
+				<select><option value="">Select</option>
+					<option value="Yearly">Yearly</option>
+					<option value="Monthly">Monthly</option></select>
+			</td>
+		</tr>
+		<tr>
+			<th>Experience(years)</th>
+			<td><input type="text" name="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<th>Location</th>
+			<td><input type="text" name="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<th>Qualification</th>
+			<td>
+				<select><option value="">Select</option>
+					<option value="Any">Any</option>
+					<option value="High School">High School</option>
+				    <option value="Associate">Associate</option>
+					<option value="Pre Bachelors">Pre Bachelors</option>
+					</select>
+			</td>
+		</tr>
+		<tr>
+			<td><input type="submit" name="submit"></td>
+			<td><input type="reset" name="reset"></td>
+		</tr>
+
+	</table>
+</form>
+</body>
+</html>

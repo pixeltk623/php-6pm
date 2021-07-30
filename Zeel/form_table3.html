@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		table tr th,td {
+			padding: 10px;
+		}
+		table {
+			margin: auto;
+			text-align: left;
+		}
+
+		input[type=text],input[type=email], textarea, select, input[type=date] {
+			width: 100%;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+
+	<table border="1" style="border-collapse:; width: 50%">
+		<tr>
+			<th bgcolor="purple"; text-align="center">Name</th>
+			<th bgcolor="purple">Value</th>
+		</tr>
+
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<th rowspan="2">
+				<label>Sex</label>
+			</th>
+			<td><input type="radio" name="gender" value="Male" checked>Male</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="gender" value="Female">Female</td>
+		</tr>
+		<tr>
+			<td>Eye color</td>
+			<td>
+				<select><option value="">Select</option>
+					<option value="green">green</option>
+					<option value="black">black</option>
+				    <option value="brown">brown</option>
+					<option value="blue">blue</option>
+					</select>
+			</td>
+		<tr>
+			<td rowspan="2">Check all that apply</td>
+			<td><input type="checkbox" name="Over 6 feet tall" value="">Over 6 feet tall</td>
+		</tr>
+		<tr>	
+			<td><input type="checkbox" name="Over 200 pounds">Over 200 pounds</td>
+		</tr>
+		<tr>
+			<td colspan="2"><label>Describe your athletic Ability</label>
+		    <textarea></textarea></td>
+	    </tr>
+		
+		<tr>
+			<td colspan="2"><input type="submit" name="enter my information"></td>
+		</tr>
+ 
+	</table>
+
+</body>
+</html>

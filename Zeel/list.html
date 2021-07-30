@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		* {
+			/*margin: 0px;*/
+			box-sizing: border-box;
+		}
+		h1#head {
+			color: red;
+			text-align: center;
+		}
+
+		#header {
+			background-color: lightgrey;
+			text-align: center;
+			padding: 10px;
+			font-size: 20px;
+			font-family: cursive;
+
+		}
+
+		.menu ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			background-color: black;
+			overflow: hidden;
+		}
+
+		.menu ul li {
+			float: left;
+			padding: 15px 20px;
+			color: blue;
+
+		}
+		.menu ul li a {
+			text-decoration: none;
+			color: white;
+		}
+
+		li:hover {
+			background-color: blue;
+		}
+
+		#right {
+			float: right;
+		}
+
+		@media screen and (min-width: 320px) and (max-width: 480px){
+  			.menu ul li {
+  				float: none;
+  				text-align: center;
+
+  			}
+
+  			#right {
+				float: none;
+			}
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div id="header">
+		<h1>Welcome To Vadodara</h1>
+	</div>
+
+	<div class="menu">
+		<ul>
+			<li><a href="">Home</a></li>
+			<li><a href="">About</a></li>
+			<li><a href="">Service</a></li>
+			<li><a href="">Contact</a></li>
+			<li id="right"><a href="">Blog</a></li>
+		</ul>
+	</div>
+	<!-- CSS
+		1. Internal CSS
+		2. External CSS
+		3. Inline CSS -->
+
+	<!-- 1. Unorder List
+	2. Order List
+	3. Nested List
+	4. Description List -->
+
+	<!-- <h1 style="">Welcome To Gujarat</h1> -->
+	<h1 id="head" style="color: yellow; text-align: left;">Welcome To Gujarat</h1>
+	<h1>1. Unorder List</h1>
+	<ul>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+
+	</ul>
+	<!-- type="circle" -->
+	<ul style="list-style-type: circle;">
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+		<li>Sharvan Kumar</li>
+	</ul>
+
+	<h1>2. Order List</h1>
+	<ol type="1" start="55">
+		<li>Kumar</li>
+		<li>Kumar</li>
+		<li>Kumar</li>
+		<li>Kumar</li>
+		<li>Kumar</li>
+	</ol>
+
+	<h1>3. Nested List</h1>
+
+	<ul>
+		<li>Test
+			<ul>
+				<li>Test</li>
+				<li>Test
+					<ul>
+						<li>Test</li>
+						<li>Test</li>
+						<li>Test</li>
+						<li>Test</li>
+					</ul>
+				</li>
+				<li>Test</li>
+
+			</ul>
+		</li>
+		<li>Test</li>
+		<li>Test
+			<ul>
+				<li>Test</li>
+				<li>Test</li>
+				<li>Test</li>
+				<li>Test</li>
+			</ul>
+		</li>
+		<li>Test
+			<ul>
+				<li>Test</li>
+				<li>Test</li>
+				<li>Test</li>
+				<li>Test</li>
+			</ul>
+		</li>
+
+		<li>Test New
+			<li>Test New</li>
+		</li>
+	</ul>
+
+	<h2>4. Description List</h2>
+
+	<dl>
+		<dt>Shivani</dt>
+		<dd>Shivani Verma, better known as BK Shivani, Brahma Kumari Shivani, or Sister Shivani, is a teacher in the Brahma Kumaris spiritual movement in India.</dd>
+		<dt>Shivani</dt>
+		<dd>Shivani Verma, better known as BK Shivani, Brahma Kumari Shivani, or Sister Shivani, is a teacher in the Brahma Kumaris spiritual movement in India.</dd>
+		<dt>Shivani</dt>
+		<dd>Shivani Verma, better known as BK Shivani, Brahma Kumari Shivani, or Sister Shivani, is a teacher in the Brahma Kumaris spiritual movement in India.</dd>
+		<dt>Shivani</dt>
+		<dd>Shivani Verma, better known as BK Shivani, Brahma Kumari Shivani, or Sister Shivani, is a teacher in the Brahma Kumaris spiritual movement in India.</dd>
+	</dl>
+
+
+</body>
+</html>
