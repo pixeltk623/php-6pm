@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.bg{
+			background-color: #F4E1E3;
+			margin: auto;
+			height: 500px;
+		}
+		.container{
+			padding: 50px;
+
+		}
+		.col-1{
+			float: left;
+			width: 50%;
+			background-color: white;
+			color: black;
+			text-align: center;
+			height: 400px;
+		}
+		.col-2{
+			float: right;
+			width: 50%;
+			background-color: red;
+			color: white;
+			text-align: center;
+			height: 250px;
+			padding-top: 150px;
+		}
+
+		input[email],input[password],h4,input[submit]
+		{
+			width: 100%;
+		}
+		.row:after {
+         content: "";
+        display: table;
+        clear: both;
+        margin: 0px;
+}
+	</style>
+</head>
+<body>
+  <div class="bg">
+  	<div class="container">
+  		<div class="col-1">
+  			<h2>Login</h2>
+  			<br>
+  			<img src="data:image/jpeg;base64,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" width=200px>
+  		    <br>
+  			<h6>or use your account</h6>
+  			<br>
+  			<input type="email" name="email" placeholder="Email">
+  			<br>
+  			<input type="password" name="password" placeholder="password">
+  			<br>
+  			<h4>Forgot your password?</h4>
+  			<br>
+  			<input type="submit" name="Login" value="Login">
+        </div>
+        <div class="col-2">
+        	<h1>HTML CSS Login Form</h1>
+        	<p> This login form is created using pure HTMLand Css. For social icons,FontAwesome is used.</p>
+
+  	</div>
+
+  </div>
+</body>
+</html>
