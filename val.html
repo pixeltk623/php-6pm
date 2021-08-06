@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>	
+
+	<form method="post">
+		<label>Name:</label>
+		<input type="text" name="name" id="name">
+		<span id="error1"></span>
+		<input type="submit" name="submit" onclick="return formCheck()">
+	</form>
+<!-- 	<button type="button">Test</button> -->
+<script type="text/javascript">
+	function formCheck() {
+
+		var nameOfUser = document.getElementById('name').value;
+
+		//console.log(nameOfUser);
+
+		if (nameOfUser=='') {
+			//alert("Name Can Not be Blank");
+
+			document.getElementById('error1').innerHTML = "Name Can Not be Blank";
+			document.getElementById('error1').style.color = "red";
+			var error1 = false;
+		} else {
+			document.getElementById('error1').innerHTML = "";
+				error1 = true;
+
+		}
+
+		if (error1) {
+			return true;
+		}
+
+		return false;
+	}
+</script>
+</body>
+</html>
