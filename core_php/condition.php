@@ -1,5 +1,53 @@
 <?php 
 	
+	// PHY
+	// CHEM 
+	// Bio 
+	// Maths 
+	// CS 
+
+	// Validation => Blank 
+
+	// 90> = O = Green 
+
+	// 90<= 80> = E = blue 
+
+	// 80<= 70> = A = ligthblue
+
+	// 70<= 60> = B = gray 
+
+	// 60<= 45> = C = yellow
+
+	// 45<= 35> = D = pink 
+
+	// 35<= Fail = red 
+
+	// 3 > greate no 
+
+	// leep year 
+
+	// Current day 
+
+	// Swap no 
+	// a = 123
+	// b = 569
+
+	// a = 569
+	// b = 123 
+
+	// without usiing third varibale 
+
+	// using third variable
+	
+
+
+
+
+
+
+
+
+
 	//Q1. Check the no is even;
 
 	// if (condition) {
@@ -58,11 +106,8 @@
 
 			} else {
 				$error =  "<span style='color: red; text-align: center;'>Number Must be greater than 0</span>";
-			}
-			
-		}
-		
-		
+			}	
+		}	
 	}
 ?>
 
@@ -84,5 +129,9 @@
 			echo $success;
 		}
 	?>
+
+	<form>
+		<input type="number" id="quantity" name="quantity" min="1" max="5"><br><br>
+	</form>
 </body>
 </html>
