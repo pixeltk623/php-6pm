@@ -1,16 +1,5 @@
 <?php 
 	
-	@switch($i)
-    @case(1)
-        First case...
-        @break
-    @case(2)
-        Second case...
-        @break
-    @default
-        Default case...
-	@endswitch
-
 	// PHY
 	// CHEM 
 	// Bio 
@@ -94,6 +83,10 @@
 	// }
 	
 	//echo $_POST['submit'];
+if (condition) {
+	# code...
+}
+    
 	
 	if(isset($_POST['submit'])) {
 		
