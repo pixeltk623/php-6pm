@@ -35,30 +35,30 @@
     	$result='';
 
     	if($av>90) {
-    		$result = "<h2 style='color:green; text-align: center;'>   pass with O grade </h2>" 
+    		$result = "<h2 style='color:green; text-align: center;'>   pass with O grade </h2>"; 
     	}
     	 else if($av>80 && $av<=90) {
-    		$result= "<h2 style='color:green ; text-align: center;'>   pass with E grade </h2>"
+    		$result= "<h2 style='color:green ; text-align: center;'>   pass with E grade </h2>";
     	}
     	 else if ($av>70 && $av<=80) {
-    		$result= "<h2 style='color:green ; text-align: center;'>   pass with A grade </h2>"
+    		$result= "<h2 style='color:green ; text-align: center;'>   pass with A grade </h2>";
     	}
     	 else if ($av>60 && $av<=70) {
-    		$result= "<h2 style='color:green ; text-align: center;'>   pass with B grade </h2>"
+    		$result= "<h2 style='color:green ; text-align: center;'>   pass with B grade </h2>";
     	}
     	 else if ($av>50 && $av<=60) {
-    		$result= "<h2 style='color:green ; text-align: center;'>   pass with C grade </h2>"
+    		$result= "<h2 style='color:green ; text-align: center;'>   pass with C grade </h2>";
     	}
     	 else if ($av>40 && $av<=50) {
-    		$result= "<h2 style='color:green ; text-align: center;'>   pass with D grade </h2>"
+    		$result= "<h2 style='color:green ; text-align: center;'>   pass with D grade </h2>";
     	}
     	 else if ($av>30 && $av<=40) {
-    		$result= "<h2 style='color:green ; text-align: center;'>   pass with E grade </h2>"
+    		$result= "<h2 style='color:green ; text-align: center;'>   pass with E grade </h2>";
     	}
-    	 /*else  ( $av<=30) {
-    		$result= "<h2 style='color:red; text-align: center;'> Fail</h2>"
-    	}
-*/
+    	//  else  ($av<=30) {
+    	// 	$result= "<h2 style='color:red; text-align: center;'> Fail</h2>";
+    	// }
+
     }
  }
 ?>
