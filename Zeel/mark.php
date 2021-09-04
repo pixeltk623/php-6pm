@@ -55,9 +55,15 @@
     	 else if ($av>30 && $av<=40) {
     		$result= "<h2 style='color:green ; text-align: center;'>   pass with E grade </h2>";
     	}
+<<<<<<< Updated upstream
     	//  else  ($av<=30) {
     	// 	$result= "<h2 style='color:red; text-align: center;'> Fail</h2>";
     	// }
+=======
+    	 else {
+    		$result= "<h2 style='color:red; text-align: center;'> Fail</h2>";
+    	}
+>>>>>>> Stashed changes
 
     }
  }
