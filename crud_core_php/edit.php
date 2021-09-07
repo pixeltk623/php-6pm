@@ -1,12 +1,10 @@
 <?php
     include_once 'config.php';
-
-    // echo "<pre>";
-    // print_r($conn);
-
-    if (isset($_POST['submit'])) {
+    date_default_timezone_set("Asia/Kolkata");
+    if (isset($_POST['Update'])) {
        
        $name = $_POST['name'];
+       $sid = $_POST['sid'];
        $email = $_POST['email'];
 
         if (isset($_POST['gender'])) {
@@ -18,88 +16,44 @@
         $city = $_POST['city'];
         $dob = $_POST['dob'];
 
-        if (isset($_POST['hobby'])) {
-            $hobby = implode(",", $_POST['hobby']);
-        } else {
-            $hobby = "";
-        }
 
-        //echo $profilePic = $_POST['ProfilePic'];
-        $profilePic = $_FILES['ProfilePic'];
-        $file_name = $profilePic['name'];
-
-        // $file_name = time().".".$ext;
+        $query = "UPDATE `users` SET `name`='$name',`email`='$email',`gender`='$gender',`city`='$city',`dob`='$dob',`updated_at`='".date("Y-m-d H:i:s")."' WHERE id = ".$sid;
         
-
-        // move_uploaded_file($profilePic['tmp_name'], "upload/".$file_name);
-
-        // if(file_exists("upload/".$profilePic['name'])) {
-        //     echo "File is Present";
-        // } else {
-        //     echo "Not Present";
-        // }
-        
-
-        // die;
-
-        // move_uploaded_file($profilePic['tmp_name'], "upload/".$profilePic['name']);
-
-        // die;
-
-        // echo $ext = pathinfo($profilePic['name'] , PATHINFO_EXTENSION);
-
-        // if($ext=='jpg' || $ext == 'JPG' || $ext=='PNG' || $ext == 'png') {
-        //     echo "File is Valid";
-        // } else {
-        //     echo "Invalid";
-        // }
-
-        // echo "<pre>";
-
-        // print_r($profilePic);
-        // die;
-
-
-        // $sizeInKb = round($profilePic['size']/1000);
-
-        // if ($sizeInKb>=50) {
-        //     if ($sizeInKb>=50 && $sizeInKb<=500) {
-        //         echo "File is Good to go";
-        //     } else {
-        //         echo "File is too large";
-        //     }
-        // } else {
-        //     echo "File is too short";
-        // }
-
-        // if ($sizeInKb>=50 && $sizeInKb<=500) {
-        //     echo "File is Good to go";
-        // } else {
-        //     echo "File is too large";
-        // }
-
-       
-
-
-       $query = "INSERT INTO users (`name`, `email`, `gender`, `hobby`, `city`, `dob`, `profile_pic`) VALUES ('$name','$email','$gender', '$hobby', '$city','$dob','$file_name')";
-    
         $result =  mysqli_query($conn,$query);
 
         
         if ($result) {
-
-            move_uploaded_file($profilePic['tmp_name'], "upload/".$profilePic['name']);
-
-            $message  = array("message" => "User Registration Done", "class" => "alert-success");
+            $message  = array("message" => "User Updated", "class" => "alert-success");
         } else {
             $message  = array("message" => "Something Error", "class" => "alert-danger");
         }
+    }
+
+    if (isset($_GET['sid'])) {
+
+        if ($_GET['sid']=='') {
+            header("Location: 404.php");
+        } else {
+            $sid =  $_GET['sid'];
+            $query = "SELECT * FROM `users` WHERE id = ".$sid;
+            $result = mysqli_query($conn, $query);
+
+            $dataOfUser = mysqli_fetch_object($result);
+           
+
+            $hobbyNew = explode(",", $dataOfUser->hobby);
+
+            
+        }
+        
+    } else {
+        header("Location: 404.php");
     }
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <!--  meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -124,25 +78,25 @@
             }
 
         ?>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $dataOfUser->name; ?>" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input type="email" class="form-control" value="<?php echo $dataOfUser->email; ?>" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Gender</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Male">
+                  <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Male" <?php echo ($dataOfUser->gender=='Male') ? 'checked' : ''; ?>>
                   <label class="form-check-label" for="flexRadioDefault1">
                     Male
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Female">
+                  <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Female" <?php echo ($dataOfUser->gender=='Female') ? 'checked' : ''; ?>>
                   <label class="form-check-label" for="flexRadioDefault2">
                     Female
                   </label>
@@ -151,19 +105,19 @@
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Hobby</label>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Cricket" name="hobby[]" id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="Cricket" name="hobby[]" id="flexCheckDefault" <?php echo in_array("Cricket", $hobbyNew) ? 'checked' : ''; ?>>
                 <label class="form-check-label" for="flexCheckDefault">
                    Cricket
                 </label>
             </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Football" name="hobby[]" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="Football" name="hobby[]" id="flexCheckChecked" <?php echo in_array("Football", $hobbyNew) ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="flexCheckChecked">
                     Football
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Tenis" name="hobby[]" id="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" value="Tenis" name="hobby[]" id="flexCheckChecked" <?php echo in_array("Tenis", $hobbyNew) ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="flexCheckChecked">
                     Tenis
                     </label>
@@ -171,23 +125,24 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">City</label>
-                <select name="city" class="form-control" >
+                <select name="city" class="form-control" required>
                     <option value="">Select</option>
-                    <option value="Vadodara">Vadodara</option>
-                    <option value="Anand">Anand</option>
-                    <option value="Surat">Surat</option>
-                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Vadodara" <?php echo ($dataOfUser->city=='Vadodara') ? 'selected' : ''; ?>>Vadodara</option>
+                    <option value="Anand" <?php echo ($dataOfUser->city=='Anand') ? 'selected' : ''; ?>>Anand</option>
+                    <option value="Surat" <?php echo ($dataOfUser->city=='Surat') ? 'selected' : ''; ?>>Surat</option>
+                    <option value="Ahmedabad" <?php echo ($dataOfUser->city=='Ahmedabad') ? 'selected' : ''; ?>>Ahmedabad</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">DOB</label>
-                <input type="date" class="form-control" name="dob" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                <input type="date" class="form-control" name="dob" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $dataOfUser->dob; ?>" required>
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Profile Pic</label>
               <input class="form-control" type="file" name="ProfilePic" id="formFile">
             </div>
-            <input type="submit" name="submit" class="btn btn-primary">
+            <input type="hidden" name="sid" value="<?php echo $dataOfUser->id; ?>">
+            <input type="submit" name="Update" value="Update" class="btn btn-primary">
         </form>
     </div>
 

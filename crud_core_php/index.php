@@ -2,9 +2,27 @@
     
     require_once 'config.php';
 
+    if (isset($_POST['delete'])) {
+        $sid = $_POST['sid'];
+        $query = "DELETE FROM `users` WHERE id = ".$sid;
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+           $message  = array("message" => "Deleted", "class" => "alert-success");
+        } else {
+            $message  = array("message" => "Something Error", "class" => "alert-danger");
+        }
+    }
+
+
     $query = "SELECT * FROM `users`";
 
     $result =  mysqli_query($conn,$query);
+
+    
+
+    // echo "<pre>";
+    // print_r($result);
 
     // echo $data = "2021-09-02 15:50:20";
 
@@ -31,19 +49,39 @@
     <div class="container">
         <h1 class="text-center text-primary">Crud In Core PHP</h1>
         <a href="create.php" class="btn btn-primary mb-2">Add New </a>
+        <?php 
+
+            if (isset($message)) {
+               ?>
+               <div class="alert alert-dismissible <?php echo $message['class']; ?>">
+                   <?php echo $message['message'] ?>
+                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               <?php
+            }
+
+        ?>
+
         <table class="table table-bordered table-sm">
             <tr>
                 <th>Sr.No</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th>City</th>
-                <th>DOB</th>
-                <th>Created At</th>
+                <th>Profile Pic</th>
+                <th>Hobby</th>
                 <th>Updated At</th>
                 <th>Action</th>
             </tr>
-            <?php 
+            <?php
+
+                if ($result->num_rows==0) {
+                ?>
+                <tr>
+                    <td colspan="9" class="text-center text-danger">No Record Found!</td>
+                </tr>
+                <?php
+                } else {
+
                 $slNo = 1;
                 while ($response = mysqli_fetch_object($result)) {
             ?>
@@ -51,19 +89,25 @@
                 <td><?php echo $slNo++; ?></td>
                 <td><?php echo $response->name; ?></td>
                 <td><?php echo $response->email; ?></td>
-                <td><?php echo $response->gender; ?></td>
-                <td><?php echo $response->city; ?></td>
-                <td><?php echo $response->dob; ?></td>
-                <td><?php echo date("Y-m-d", strtotime($response->created_at)); ?></td>
+                <td>
+                    <img width="100" src="upload/<?php echo $response->profile_pic; ?>" alt="image">
+                </td>
+                <td><?php echo $response->hobby; ?></td>
                 <td><?php echo date("Y-m-d", strtotime($response->updated_at)); ?></td>
                 <td>
-                    <a href="" class="btn btn-success">Show</a>
-                    <a href="" class="btn btn-secondary">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <a href="show.php?sid=<?php echo $response->id; ?>" class="btn btn-success">Show</a>
+                    <a href="edit.php?sid=<?php echo $response->id; ?>" class="btn btn-secondary">Edit</a>
+                    <!-- <a href="delete.php?sid=<?php echo $response->id; ?>" class="btn btn-danger">Delete</a> -->
+
+                    <form method="post" class="d-inline">
+                        <input type="hidden" name="sid" value="<?php echo $response->id; ?>">
+                        <input type="submit" name="delete" value="Delete" class="btn btn-danger">
+                    </form>
                 </td>
             </tr>
             <?php 
                 }
+            }
             ?>
         </table>
     </div>
