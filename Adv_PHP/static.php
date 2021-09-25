@@ -2,6 +2,9 @@
 	
 	class StaticMethod {
 
+
+		
+
 		public static function OurWebsite() {
 			echo "Our Website is www.tops-tech.com";
 		}
