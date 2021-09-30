@@ -24,6 +24,7 @@
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th>Sr.No</th>
         <th>Name</th>
         <th>Email</th>
         <th>Gender</th>
@@ -36,13 +37,14 @@
       ?>
 
       <tr>
+        <td><?php echo ++$key; ?></td>
         <td><?php echo $value->name; ?></td>
         <td><?php echo $value->email; ?></td>
         <td><?php echo $value->gender; ?></td>
         <td>
-          <button type="button" name="button" class="btn btn-warning">Show</button>
-          <button type="button" name="button" class="btn btn-primary">Edit</button>
-          <button type="button" name="button" class="btn btn-danger">Delete</button>
+          <a href="button"  class="btn btn-warning">Show</a>
+          <a href="edit?eid=<?php echo $value->id; ?>"  class="btn btn-primary">Edit</a>
+          <a href="delete?did=<?php echo $value->id; ?>"  class="btn btn-danger">Delete</a>
         </td>
       </tr>
       <?php

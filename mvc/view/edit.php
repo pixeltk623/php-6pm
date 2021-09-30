@@ -27,31 +27,31 @@
             }
 
         ?>
-  <form method="post">
+  <form method="post" action="update?id=<?php echo $result->id; ?>">
     <div class="form-group">
       <label>Name</label>
-      <input type="text" name="name" class="form-control">
+      <input type="text" name="name" class="form-control" value="<?php echo $result->name; ?>">
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" name="email" class="form-control">
+      <input type="email" name="email" class="form-control" value="<?php echo $result->email; ?>">
     </div>
     <div class="form-group">
       <label>Gender</label>
       <div class="form-check">
-      <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="Male" >
+      <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="Male" <?php echo ($result->gender=='Male') ? 'checked' : '' ?> >
       <label class="form-check-label" for="exampleRadios1">
         Male
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="Feamle">
+      <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="Feamle" <?php echo ($result->gender=='Feamle') ? 'checked' : '' ?>>
       <label class="form-check-label" for="exampleRadios2">
         Female
       </label>
     </div>
     </div>
-    <input type="submit" name="submit" class="btn btn-primary">
+    <input type="submit" name="submit"  value="Update" class="btn btn-primary">
   </form>
 
 </div>
