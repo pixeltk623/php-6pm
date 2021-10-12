@@ -1,5 +1,74 @@
 <?php 
-	
+    
+
+    // HTML 
+
+    // css bs 
+    // SQL 
+
+    // Core PHP 
+
+    // Adv PHP (OOPs 
+    // )
+
+    // MVC 
+
+    // Login system
+
+    // Js/Jquery 
+
+    // CI 
+ 
+    // setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+
+    echo "<pre>";
+
+    print_r($_COOKIE);
+
+    $cookie_name = "user";
+    $cookie_value = "John Doe";
+
+   setcookie($cookie_name, $cookie_value, time() + (60), "/"); // 86400 = 1 day
+
+    die;
+
+    $conn = mysqli_connect("localhost","root","","php-6pm");
+
+    $query = "SELECT * FROM email_template WHERE id = 1";
+
+    $res = mysqli_query($conn, $query);
+
+    $dataObject = mysqli_fetch_object($res);
+
+    // echo "<pre>";
+
+    // echo $dataObject->template;
+
+
+    $queryU = "SELECT * FROM users";
+
+    $resU = mysqli_query($conn, $queryU);
+
+    while($dataObjectU = mysqli_fetch_object($resU)) {
+        $html[] =  str_replace("{name}",$dataObjectU->name,$dataObject->template);
+    }
+
+
+    // echo "<pre>";
+
+    // print_r($html);
+
+    // die;
+
+    // foreach ($html as $key => $value) {
+    //     echo $value;
+    // }
+
+    
+    
+
+    // die;
 	require_once '../vendor/autoload.php';
 
 	// use Twilio\Rest\Client;
@@ -34,18 +103,29 @@
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 
 
+    foreach ($html as $key => $value) {
+      
+   
     $mail->setFrom('dream.sharvan@gmail.com', 'Tops Tech');
-    $mail->addAddress('zeelsheth12440@gmail.com', 'Zeel Sheth');     //Add a recipient
+    // $mail->addAddress('zeelsheth12440@gmail.com', 'Zeel Sheth');     //Add a recipient
     $mail->addAddress('sharvank1515@gmail.com');               //Name is optional
     $mail->addReplyTo('dream.sharvan@gmail.com', 'Tops Tech');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
 
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    $mail->addAttachment('example.jpg', 'example.jpg');    //Optional name
+
+
+
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Tops Tech';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Body    = $value;
 
     $mail->send();
   	
+
+     }
 
 ?>
