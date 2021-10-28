@@ -36,6 +36,15 @@
 			return json_encode($this->finalArray);
 
 		}
+
+		public function insertData($data) {
+
+			$this->query = "INSERT INTO `products`(`name`, `description`, `price`, `category_id`) VALUES ('".$data->pname."','','".$data->price."','')";
+
+			$this->result = mysqli_query($this->conn, $this->query);
+
+			return $this->result;
+		}
 	}
 
 ?>
