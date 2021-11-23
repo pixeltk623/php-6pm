@@ -58,7 +58,7 @@
 
                     <!-- Content Row -->
 
-                    <form method="post" action="<?php echo base_url("Dashboard/update/".$data[0]->id) ?>">
+                    <form method="post" enctype="multipart/form-data" action="<?php echo base_url("Dashboard/update/".$data[0]->id) ?>" enctype="multipart/form-data">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control" value="<?php echo $data[0]->name ?>">
                         <label>Email</label>
@@ -71,6 +71,10 @@
                         <input type="radio" name="gender" class="form-control-check" value="Male" <?php echo ($data[0]->gender=='Male' ? 'checked' : '') ?>> Male
                         <input type="radio" name="gender" class="form-control-check" value="Female" <?php echo ($data[0]->gender=='Female' ? 'checked' : '') ?>> Female
                         <br><br>
+                        <div class="form-group">
+                            <label>Profile Pic</label>
+                            <input type="file" name="fileupload">
+                        </div>
                         <input type="submit" name="submit" class="btn btn-primary" value="Update">
                     </form>
 

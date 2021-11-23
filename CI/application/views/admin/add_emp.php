@@ -59,7 +59,7 @@
                     <!-- Content Row -->
                    
 
-                    <form method="post" action="<?php echo base_url("Dashboard/store") ?>">
+                    <form method="post" action="<?php echo base_url("Dashboard/store") ?>" enctype="multipart/form-data">
                         <label>Name</label>
                         <input type="text" name="name" class="form-control">
                         <label>Email</label>
@@ -72,6 +72,10 @@
                         <input type="radio" name="gender" class="form-control-check" value="Male"> Male
                         <input type="radio" name="gender" class="form-control-check" value="Female"> Female
                         <br><br>
+                        <div class="form-group">
+                            <label>Profile Pic</label>
+                            <input type="file" name="fileupload">
+                        </div>
                         <input type="submit" name="submit" class="btn btn-primary">
                     </form>
 

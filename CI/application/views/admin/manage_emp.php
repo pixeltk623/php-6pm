@@ -67,6 +67,7 @@
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>Gender</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                         <?php 
@@ -78,6 +79,9 @@
                                     <td><?php echo $value->email; ?></td>
                                     <td><?php echo $value->mobile; ?></td>
                                     <td><?php echo $value->gender; ?></td>
+                                    <td>
+                                        <img src="<?php echo base_url("uploads")."/".$value->fileUpload; ?>" width="100">
+                                    </td>
                                     <td>
                                         <a href="" class="btn btn-primary">Show</a>
                                         <a href="<?php echo base_url("Dashboard/edit/".$value->id) ?>" class="btn btn-secondary">Edit</a>

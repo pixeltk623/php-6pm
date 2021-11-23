@@ -31,11 +31,34 @@
 
         public function store() {
 
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png|jpeg';
+            // $config['max_size']             = 1000;
+            // $config['max_width']            = 1024;
+            // $config['max_height']           = 7680;
+
+            $this->load->library('upload', $config);
+
+
+            if (!$this->upload->do_upload('fileupload')) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+
+            }
+
+            // echo "<pre>";
+            // print_r($data['upload_data']['file_name']);
+            
+            // die;
+
+
         	$data = array(
       			"name" => $this->input->post("name"),
       			"email" => $this->input->post("email"),
       			"mobile" => $this->input->post("mobile"),
-      			"gender" => $this->input->post("gender")
+      			"gender" => $this->input->post("gender"),
+                "fileUpload" => $data['upload_data']['file_name']
       		);
 
 
