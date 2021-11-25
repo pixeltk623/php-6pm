@@ -27,7 +27,7 @@
             <?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>
 
             <tr>
-                    <td><?php echo form_input(array('name' => $i.'[qty]', 'value' => $items['qty'], 'maxlength' => '3', 'size' => '5')); ?></td>
+                    <td><?php echo form_input(array('name' => $i.'[qty]', 'value' => $items['qty'], 'maxlength' => '3', 'size' => '5', 'type'=> 'number', 'class' => 'cart-change', 'data-id' => $items['rowid'])); ?></td>
                     <td>
                             <?php echo $items['name']; ?>
 
@@ -61,4 +61,47 @@
     </table>
     <p><?php echo form_submit('', 'Update your Cart'); ?></p>
 
+    <div id="res">
+        
+    </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+       $(document).on("change",".cart-change", function() {
+            let qty = $(this).val();
+            let rowId = $(this).data('id');
+            let dataArray = {rowid: rowId, qty: qty}
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/php-6pm/CI/shopping/update',
+                dataType: 'json',
+                data: dataArray,
+                success:function(data){
+                    var table = '';
+                    table += "<table class='table table-bordered mt-3'>";
+                    table +=        "<tr>";
+                    table +=            "<th>QTY</th>";
+                    table +=            "<th>Item Description</th>";
+                    table +=            "<th style='text-align:right'>Item Price</th>";
+                    table +=            "<th style='text-align:right'>Sub-Total</th>";
+                    table +=        "</tr>";
+                   $.each( data, function( key, value ) {
+                      // console.log( key + ": " + value );
+                    table += "<tr>";
+                         table += "<td>"+value.qty+"</td>";
+                         table += "<td>"+value.name+"</td>";
+                         table += "<td>"+value.price+"</td>";
+                         table += "<td>"+value.subtotal+"</td>";
+                    table += "</tr>";
+                     // console.log(value);
+                    });
+                    table += "<table>";
+                    console.table(table);
+
+                    $("#res").html(table);
+                }
+            });
+       });
+    });
+</script>

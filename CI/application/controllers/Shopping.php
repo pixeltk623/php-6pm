@@ -62,7 +62,12 @@
 			
 			$data = $_POST;
 
+			
+
 			$this->cart->update($data);
+
+			echo json_encode($this->cart->contents(), true);
+			
 
 		}
 
@@ -86,15 +91,15 @@
 			// echo $this->calendar->generate(2006, 6, $data);
 
 
-			$prefs = array(
-			        'start_day'    => 'saturday',
-			        'month_type'   => 'long',
-			        'day_type'     => 'short'
-			);
+			// $prefs = array(
+			//         'start_day'    => 'saturday',
+			//         'month_type'   => 'long',
+			//         'day_type'     => 'short'
+			// );
 
-			$this->load->library('calendar', $prefs);
+			// $this->load->library('calendar', $prefs);
 
-			echo $this->calendar->generate();
+			// echo $this->calendar->generate();
 		}
 	}
 
